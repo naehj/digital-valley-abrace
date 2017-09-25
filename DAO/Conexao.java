@@ -18,7 +18,7 @@ public class Conexao {
 	    public Conexao() {
 	        
 	        driver = "org.postgresql.Driver";
-	        url = "jdbc:postgresql://192.169.1.2:5432/n2s";
+	        url = "jdbc:postgresql://192.169.1.2:1527/n2s";
 	        usuario = "postgres";
 	        senha = "n2s";
 
