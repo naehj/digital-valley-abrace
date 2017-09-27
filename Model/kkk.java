@@ -1,9 +1,10 @@
-package src;
+package Model;
 
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
-public class login {
+public class kkk {
 
 	protected Shell shell;
 
@@ -13,7 +14,7 @@ public class login {
 	 */
 	public static void main(String[] args) {
 		try {
-			login window = new login();
+			kkk window = new kkk();
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
