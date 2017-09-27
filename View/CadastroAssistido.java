@@ -1,17 +1,23 @@
 package View;
 
+import java.text.ParseException;
+
+import javax.swing.text.MaskFormatter;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.DateTime;
 
 public class CadastroAssistido extends Shell {
-	private Text nome;
-	private Text cpf;
-	private Text text_1;
-	private Text text_2;
+	private Text tfNome;
+	private Text tfCpf;
+	private Text tfEndereco;
+	private Text tfTelefone;
+	private Text tfRg;
 
 	/**
 	 * Launch the application.
@@ -36,47 +42,70 @@ public class CadastroAssistido extends Shell {
 	/**
 	 * Create the shell.
 	 * @param display
+	 * @throws ParseException 
 	 */
-	public CadastroAssistido(Display display) {
+	public CadastroAssistido(Display display) throws ParseException {
 		super(display, SWT.SHELL_TRIM);
-		
+		MaskFormatter mascaracpf = new MaskFormatter("###.###.###-##");
 		Label lblCadastrodeAssistido = new Label(this, SWT.CENTER);
 		lblCadastrodeAssistido.setAlignment(SWT.CENTER);
 		lblCadastrodeAssistido.setFont(SWTResourceManager.getFont("Segoe UI Emoji", 30, SWT.NORMAL));
-		lblCadastrodeAssistido.setBounds(76, 65, 401, 64);
+		lblCadastrodeAssistido.setBounds(161, 43, 376, 53);
 		lblCadastrodeAssistido.setText("Cadastro de assistido");
 		
 		Label lblNome = new Label(this, SWT.NONE);
-		lblNome.setFont(SWTResourceManager.getFont("Segoe UI Emoji", 12, SWT.NORMAL));
-		lblNome.setBounds(82, 149, 53, 21);
+		lblNome.setFont(SWTResourceManager.getFont("Segoe UI Emoji", 16, SWT.NORMAL));
+		lblNome.setBounds(187, 147, 62, 28);
 		lblNome.setText("Nome:");
 		
-		nome = new Text(this, SWT.BORDER);
-		nome.setBounds(151, 149, 310, 21);
+		tfNome = new Text(this, SWT.BORDER);
+		tfNome.setFont(SWTResourceManager.getFont("Segoe UI", 16, SWT.NORMAL));
+		tfNome.setBounds(255, 147, 369, 32);
 		
 		Label lblCpf = new Label(this, SWT.NONE);
 		lblCpf.setText("CPF:");
-		lblCpf.setFont(SWTResourceManager.getFont("Segoe UI Emoji", 12, SWT.NORMAL));
-		lblCpf.setBounds(102, 175, 33, 21);
+		lblCpf.setFont(SWTResourceManager.getFont("Segoe UI Emoji", 16, SWT.NORMAL));
+		lblCpf.setBounds(209, 183, 40, 28);
 		
-		cpf = new Text(this, SWT.BORDER);
-		cpf.setBounds(151, 175, 310, 21);
+		tfCpf = new Text(this, SWT.BORDER);
+		tfCpf.setFont(SWTResourceManager.getFont("Segoe UI", 16, SWT.NORMAL));
+		tfCpf.setBounds(255, 185, 369, 32);
 		
-		Label label_1 = new Label(this, SWT.NONE);
-		label_1.setText("Nome:");
-		label_1.setFont(SWTResourceManager.getFont("Segoe UI Emoji", 12, SWT.NORMAL));
-		label_1.setBounds(82, 201, 53, 21);
+		Label lblEndereo = new Label(this, SWT.NONE);
+		lblEndereo.setText("Endere\u00E7o:");
+		lblEndereo.setFont(SWTResourceManager.getFont("Segoe UI Emoji", 16, SWT.NORMAL));
+		lblEndereo.setBounds(158, 260, 91, 28);
 		
-		text_1 = new Text(this, SWT.BORDER);
-		text_1.setBounds(151, 201, 310, 21);
+		tfEndereco = new Text(this, SWT.BORDER);
+		tfEndereco.setFont(SWTResourceManager.getFont("Segoe UI", 16, SWT.NORMAL));
+		tfEndereco.setBounds(255, 262, 369, 32);
 		
-		Label label_2 = new Label(this, SWT.NONE);
-		label_2.setText("Nome:");
-		label_2.setFont(SWTResourceManager.getFont("Segoe UI Emoji", 12, SWT.NORMAL));
-		label_2.setBounds(82, 228, 53, 21);
+		Label lblDataDeNascimento = new Label(this, SWT.NONE);
+		lblDataDeNascimento.setText("Data de Nascimento:");
+		lblDataDeNascimento.setFont(SWTResourceManager.getFont("Segoe UI Emoji", 16, SWT.NORMAL));
+		lblDataDeNascimento.setBounds(54, 300, 195, 28);
 		
-		text_2 = new Text(this, SWT.BORDER);
-		text_2.setBounds(151, 228, 310, 21);
+		Label lblTelefone = new Label(this, SWT.NONE);
+		lblTelefone.setText("Telefone:");
+		lblTelefone.setFont(SWTResourceManager.getFont("Segoe UI Emoji", 16, SWT.NORMAL));
+		lblTelefone.setBounds(164, 338, 85, 28);
+		
+		tfTelefone = new Text(this, SWT.BORDER);
+		tfTelefone.setFont(SWTResourceManager.getFont("Segoe UI", 16, SWT.NORMAL));
+		tfTelefone.setBounds(255, 338, 369, 32);
+		
+		tfRg = new Text(this, SWT.BORDER);
+		tfRg.setFont(SWTResourceManager.getFont("Segoe UI", 16, SWT.NORMAL));
+		tfRg.setBounds(255, 223, 369, 32);
+		
+		Label lblRg = new Label(this, SWT.NONE);
+		lblRg.setText("RG:");
+		lblRg.setFont(SWTResourceManager.getFont("Segoe UI Emoji", 16, SWT.NORMAL));
+		lblRg.setBounds(217, 221, 32, 28);
+		
+		DateTime dataNascimento = new DateTime(this, SWT.BORDER);
+		dataNascimento.setFont(SWTResourceManager.getFont("Segoe UI", 16, SWT.NORMAL));
+		dataNascimento.setBounds(255, 300, 310, 32);
 		createContents();
 	}
 
@@ -85,7 +114,7 @@ public class CadastroAssistido extends Shell {
 	 */
 	protected void createContents() {
 		setText("SWT Application");
-		setSize(612, 569);
+		setSize(715, 569);
 
 	}
 

@@ -14,14 +14,14 @@ public abstract class Pessoa {
 	private String email;
 
 	
-	public Pessoa(String nome, String cpf, String endereco, LocalDate dataNascimento, LocalDate dataCadastro,
+	public Pessoa(String nome, String cpf, String endereco, LocalDate dataNascimento,
 			String telefone, String telefone2, long rg, String email) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.endereco = endereco;
 		this.dataNascimento = dataNascimento;
-		this.dataCadastro = dataCadastro;
+		this.dataCadastro = LocalDate.now();
 		this.telefone = telefone;
 		this.telefone2 = telefone2;
 		this.rg = rg;
