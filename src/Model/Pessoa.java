@@ -2,31 +2,58 @@ package Model;
 
 import java.time.LocalDate;
 
-public abstract class Pessoa {
-	private String nome;
-	private String endereco;
-	private LocalDate dataCadastro;
-	private String telefone;
-	private String telefone2;
-	private String email;
+import Exceptions.PessoaInvalidaException;
 
+public abstract class Pessoa {
 	
-	public Pessoa(String nome, String endereco, LocalDate dataCadastro, String telefone, String telefone2, String email) {
+	private int idPessoa;
+	private String nome;
+	private String email;
+	private String endereco;
+	private String telefone1;
+	private String telefone2;
+	private LocalDate dataCadastro;
+	
+	public Pessoa(String nome, String endereco, String telefone1, String telefone2, LocalDate dataCadastro, String email) {
 		super();
 		this.nome = nome;
-		this.endereco = endereco;
-		this.dataCadastro = dataCadastro;
-		this.telefone = telefone;
-		this.telefone2 = telefone2;
 		this.email = email;
+		this.endereco = endereco;
+		this.telefone1 = telefone1;
+		this.telefone2 = telefone2;
+		this.dataCadastro = dataCadastro;
+	}
+	
+	public void realizarDoacao(double valor){
+		
+	}
+	public int getIdPessoa() {
+		return idPessoa;
+	}
+
+	public void setIdPessoa(int idPessoa) throws PessoaInvalidaException {
+		if(idPessoa < 0) {
+			throw new PessoaInvalidaException("O id informado é inválido");
+		}
+		this.idPessoa = idPessoa;
 	}
 
 	public String getNome() {
 		return nome;
 	}
-
-	public void setNome(String nome) {
+	public void setNome(String nome) throws PessoaInvalidaException{
+		if(nome == null) {
+			throw new PessoaInvalidaException("O nome informado é inválido");
+		}
 		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getEndereco() {
@@ -36,21 +63,13 @@ public abstract class Pessoa {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	
-	public LocalDate getDataCadastro() {
-		return dataCadastro;
+
+	public String getTelefone1() {
+		return telefone1;
 	}
 
-	public void setDataCadastro(LocalDate dataCadastro) {
-		this.dataCadastro = dataCadastro;
-	}
-
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	public void setTelefone1(String telefone1) {
+		this.telefone1 = telefone1;
 	}
 
 	public String getTelefone2() {
@@ -61,11 +80,13 @@ public abstract class Pessoa {
 		this.telefone2 = telefone2;
 	}
 
-	public String getEmail() {
-		return email;
+	public LocalDate getDataCadastro() {
+		return dataCadastro;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setDataCadastro(LocalDate dataCadastro) {
+		this.dataCadastro = dataCadastro;
 	}
+	
+	
 }
