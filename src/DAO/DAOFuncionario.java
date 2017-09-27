@@ -16,7 +16,8 @@ public class DAOFuncionario extends ExecutaSQL{
 	}
 	
 	public Funcionario getFuncionario(String login, String senha) throws FuncionarioInvalidoException, PessoaInvalidaException {
-        try {
+        //Alterando
+		try {
         	String sql = "SELECT , idPessoa FROM FUNCIONARIO WHERE login=? AND senha=?";
             PreparedStatement ps = getConexao().prepareStatement(sql);
             ps.setString(1, login);
