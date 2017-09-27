@@ -5,18 +5,23 @@ import java.time.LocalDate;
 import Exceptions.PessoaInvalidaException;
 
 public abstract class Pessoa {
+	int id;
     private String nome;
-    private String cpf;
-    private String endereco;
     private LocalDate dataNascimento;
-    private LocalDate dataCadastro;
-    private String telefone;
-    private String telefone2;
-    private long rg;
+    private String cpf;
+    private String rg;
+    private String endereco;
     private String email;
-	
+	private String telefone;
+    private String telefone2;
+    private LocalDate dataCadastro;
+    
+    public Pessoa() {
+    	
+    }
+    
     public Pessoa(String nome, String cpf, String endereco, LocalDate dataNascimento, LocalDate dataCadastro,
-			String telefone, String telefone2, long rg, String email) throws PessoaInvalidaException{
+			String telefone, String telefone2, String rg, String email) throws PessoaInvalidaException{
     	setNome(nome);
     	setCpf(cpf);
     	setEndereco(endereco);
@@ -28,6 +33,32 @@ public abstract class Pessoa {
     	setRg(rg);
 		
     }
+    
+    public Pessoa(int id, String nome, String cpf, String endereco, LocalDate dataNascimento, LocalDate dataCadastro,
+			String telefone, String telefone2, String rg, String email) throws PessoaInvalidaException{
+    	setId(id);
+    	setNome(nome);
+    	setCpf(cpf);
+    	setEndereco(endereco);
+    	setDataNascimento(dataNascimento);
+    	setDataCadastro(dataCadastro);
+    	setTelefone(telefone);
+    	setTelefone2(telefone2);
+    	setEmail(email);
+    	setRg(rg);
+	}
+    
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) throws PessoaInvalidaException {
+		if(id < 0) {
+			throw new PessoaInvalidaException("O id informado é inválido");
+		}
+		this.id = id;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -91,11 +122,11 @@ public abstract class Pessoa {
 		}
 		this.telefone2 = telefone2;
 	}
-	public long getRg() {
+	public String getRg() {
 		return rg;
 	}
-	public void setRg(long rg) throws PessoaInvalidaException{
-		if(rg < 0) {
+	public void setRg(String rg) throws PessoaInvalidaException{
+		if(rg == null) {
 			throw new PessoaInvalidaException("O RG informado é inválido");
 		}
 		this.rg = rg;
