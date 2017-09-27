@@ -1,98 +1,96 @@
 package View;
 
-import java.awt.EventQueue;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.wb.swt.SWTResourceManager;
+import org.eclipse.swt.widgets.Text;
 
-import javax.swing.JFrame;
-import javax.swing.JTextField;
-import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.Color;
-import javax.swing.UIManager;
-import java.awt.Point;
-import javax.swing.SwingConstants;
-import javax.swing.JTextArea;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JTabbedPane;
-import javax.swing.JToolBar;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
-
-public class CadastroAssistido {
-
-	private JFrame frame;
-	private JTextField nome;
-	private JLabel lblNewLabel;
-	private JTextField cpf;
-	private JLabel lblEndereo;
-	private JTextField endereco;
+public class CadastroAssistido extends Shell {
+	private Text nome;
+	private Text cpf;
+	private Text text_1;
+	private Text text_2;
 
 	/**
 	 * Launch the application.
+	 * @param args
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CadastroAssistido window = new CadastroAssistido();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
+	public static void main(String args[]) {
+		try {
+			Display display = Display.getDefault();
+			CadastroAssistido shell = new CadastroAssistido(display);
+			shell.open();
+			shell.layout();
+			while (!shell.isDisposed()) {
+				if (!display.readAndDispatch()) {
+					display.sleep();
 				}
 			}
-		});
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
-	 * Create the application.
+	 * Create the shell.
+	 * @param display
 	 */
-	public CadastroAssistido() {
-		initialize();
+	public CadastroAssistido(Display display) {
+		super(display, SWT.SHELL_TRIM);
+		
+		Label lblCadastrodeAssistido = new Label(this, SWT.CENTER);
+		lblCadastrodeAssistido.setAlignment(SWT.CENTER);
+		lblCadastrodeAssistido.setFont(SWTResourceManager.getFont("Segoe UI Emoji", 30, SWT.NORMAL));
+		lblCadastrodeAssistido.setBounds(76, 65, 401, 64);
+		lblCadastrodeAssistido.setText("Cadastro de assistido");
+		
+		Label lblNome = new Label(this, SWT.NONE);
+		lblNome.setFont(SWTResourceManager.getFont("Segoe UI Emoji", 12, SWT.NORMAL));
+		lblNome.setBounds(82, 149, 53, 21);
+		lblNome.setText("Nome:");
+		
+		nome = new Text(this, SWT.BORDER);
+		nome.setBounds(151, 149, 310, 21);
+		
+		Label lblCpf = new Label(this, SWT.NONE);
+		lblCpf.setText("CPF:");
+		lblCpf.setFont(SWTResourceManager.getFont("Segoe UI Emoji", 12, SWT.NORMAL));
+		lblCpf.setBounds(102, 175, 33, 21);
+		
+		cpf = new Text(this, SWT.BORDER);
+		cpf.setBounds(151, 175, 310, 21);
+		
+		Label label_1 = new Label(this, SWT.NONE);
+		label_1.setText("Nome:");
+		label_1.setFont(SWTResourceManager.getFont("Segoe UI Emoji", 12, SWT.NORMAL));
+		label_1.setBounds(82, 201, 53, 21);
+		
+		text_1 = new Text(this, SWT.BORDER);
+		text_1.setBounds(151, 201, 310, 21);
+		
+		Label label_2 = new Label(this, SWT.NONE);
+		label_2.setText("Nome:");
+		label_2.setFont(SWTResourceManager.getFont("Segoe UI Emoji", 12, SWT.NORMAL));
+		label_2.setBounds(82, 228, 53, 21);
+		
+		text_2 = new Text(this, SWT.BORDER);
+		text_2.setBounds(151, 228, 310, 21);
+		createContents();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Create contents of the shell.
 	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 615, 568);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		
-		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 16));
-		lblNome.setBounds(114, 131, 46, 14);
-		frame.getContentPane().add(lblNome);
-		
-		JLabel lblCadastroDeAssistido = new JLabel("Cadastro de assistido");
-		lblCadastroDeAssistido.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCadastroDeAssistido.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 36));
-		lblCadastroDeAssistido.setBounds(114, 54, 382, 49);
-		frame.getContentPane().add(lblCadastroDeAssistido);
-		
-		nome = new JTextField();
-		nome.setBounds(170, 128, 326, 20);
-		frame.getContentPane().add(nome);
-		nome.setColumns(10);
-		
-		lblNewLabel = new JLabel("CPF:");
-		lblNewLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 16));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel.setBounds(130, 156, 30, 14);
-		frame.getContentPane().add(lblNewLabel);
-		
-		cpf = new JTextField();
-		cpf.setColumns(10);
-		cpf.setBounds(170, 153, 326, 20);
-		frame.getContentPane().add(cpf);
-		
-		lblEndereo = new JLabel("Endere\u00E7o:");
-		lblEndereo.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 16));
-		lblEndereo.setBounds(93, 181, 67, 14);
-		frame.getContentPane().add(lblEndereo);
-		
-		endereco = new JTextField();
-		endereco.setColumns(10);
-		endereco.setBounds(170, 178, 326, 20);
-		frame.getContentPane().add(endereco);
+	protected void createContents() {
+		setText("SWT Application");
+		setSize(612, 569);
+
+	}
+
+	@Override
+	protected void checkSubclass() {
+		// Disable the check that prevents subclassing of SWT components
 	}
 }
