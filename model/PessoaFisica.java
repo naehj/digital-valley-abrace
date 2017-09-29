@@ -15,7 +15,7 @@ public class PessoaFisica extends Pessoa{
 	 }
 	 
 	 public PessoaFisica(int id, String cpf, String rg, LocalDate dataNasc) throws PessoaFisicaException, PessoaInvalidaException {
-		 setId(id);
+		 setIdPessoa(id);
 		 setCpf(cpf);
 		 setRg(rg);
 		 setDataNasc(dataNasc);

@@ -8,7 +8,7 @@ public abstract class Pessoa {
 	private int id;
     private String nome;
     private String endereco;
-	private String telefone;
+	private String telefone1;
     private String telefone2;
     private LocalDate dataCadastro;
     private String email;
@@ -18,25 +18,25 @@ public abstract class Pessoa {
     	
     }
     
-    public Pessoa(String nome, String endereco, String telefone, String telefone2, LocalDate dataCadastro,String email, boolean ativo) throws PessoaInvalidaException{
+    public Pessoa(String nome, String endereco, String telefone1, String telefone2, LocalDate dataCadastro,String email, boolean ativo) throws PessoaInvalidaException{
     	setNome(nome);
-    	setTelefone(telefone);
+    	setTelefone(telefone1);
     	setTelefone2(telefone2);
     	setEndereco(endereco);
     	setDataCadastro(dataCadastro);
     	setEmail(email);
      }
     
-	public Pessoa(int id, String nome, String endereco,  LocalDate dataCadastro, String telefone, String telefone2, String email, boolean ativo) throws PessoaInvalidaException{
-    	this(nome, endereco, telefone, telefone2, dataCadastro, email, ativo);
-		setId(id);
+	public Pessoa(int id, String nome, String endereco,  LocalDate dataCadastro, String telefone1, String telefone2, String email, boolean ativo) throws PessoaInvalidaException{
+    	this(nome, endereco, telefone1, telefone2, dataCadastro, email, ativo);
+		setIdPessoa(id);
 	}
     
-	public int getId() {
+	public int getIdPessoa() {
 		return id;
 	}
 
-	public void setId(int id) throws PessoaInvalidaException {
+	public void setIdPessoa(int id) throws PessoaInvalidaException {
 		if(id < 0) {
 			throw new PessoaInvalidaException("O id informado é inválido");
 		}
@@ -72,14 +72,14 @@ public abstract class Pessoa {
 		}
 		this.dataCadastro = dataCadastro;
 	}
-	public String getTelefone() {
-		return telefone;
+	public String getTelefone1() {
+		return telefone1;
 	}
-	public void setTelefone(String telefone) throws PessoaInvalidaException{
-		if(telefone == null) {
-			throw new PessoaInvalidaException("O telefone informado é inválido");
+	public void setTelefone(String telefone1) throws PessoaInvalidaException{
+		if(telefone1 == null) {
+			throw new PessoaInvalidaException("O telefone1 informado é inválido");
 		}
-		this.telefone = telefone;
+		this.telefone1 = telefone1;
 	}
 	public String getTelefone2() {
 		return telefone2;

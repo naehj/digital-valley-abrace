@@ -11,7 +11,7 @@ public class Usuario extends PessoaFisica{
 	private String senha;
 	
 	public Usuario(int id, String usuario, String senha) throws FuncionarioInvalidoException, PessoaInvalidaException {
-		setId(id);
+		setIdPessoa(id);
 		setUsuario(usuario);
 		setSenha(senha);
 	}

@@ -1,16 +1,17 @@
 package DAO;
 
 import java.sql.Connection;
+
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import Model.Pessoa;
 
-public class PessoaDAO {
+import model.Pessoa;
+
+public class PessoaDAO extends ExecutaSQL{
 	
-	Connection con;
-	public PessoaDAO() throws ClassNotFoundException {
-		this.con = new Conexao().getConnection();
+	public PessoaDAO(Connection connection) {
+		super(connection);
 	}
 	//Incompleto
 	public void adiciona(Pessoa pessoa) {
@@ -18,7 +19,7 @@ public class PessoaDAO {
 					+"(idPessoa, nome, endereco, telefone1, telefone2, dataCadastro, email)"
 					+"(?, ?, ?, ?, ?, ?, ?)";
 		try {
-			PreparedStatement stmt = con.prepareStatement(sql);
+			PreparedStatement stmt = getConexao().prepareStatement(sql);
 			
 			stmt.setInt(1, pessoa.getIdPessoa());
 			stmt.setString(2, pessoa.getNome());
@@ -30,8 +31,8 @@ public class PessoaDAO {
 
 			stmt.execute();
 			stmt.close();
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
+		} catch (SQLException ex) {
+			throw new RuntimeException(ex);
 		}
 			
 	}
