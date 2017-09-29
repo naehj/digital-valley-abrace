@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import Model.Assistido;
+import model.Assistido;
 
 public class DAOAssistido {
 	Connection con;
