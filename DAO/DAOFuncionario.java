@@ -5,9 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import Exceptions.FuncionarioInvalidoException;
-import Exceptions.PessoaInvalidaException;
-import Model.Funcionario;
+import exceptions.FuncionarioInvalidoException;
+import exceptions.PessoaInvalidaException;
+import model.Usuario;
 
 public class DAOFuncionario extends ExecutaSQL{
 
@@ -15,7 +15,7 @@ public class DAOFuncionario extends ExecutaSQL{
 		super(connection);
 	}
 	
-	public Funcionario getFuncionario(String login, String senha) throws FuncionarioInvalidoException, PessoaInvalidaException {
+	public Usuario getFuncionario(String login, String senha) throws FuncionarioInvalidoException, PessoaInvalidaException {
         //Alterando alguma coisa
 		try {
         	String sql = "SELECT , idPessoa FROM FUNCIONARIO WHERE login=? AND senha=?";
@@ -26,7 +26,7 @@ public class DAOFuncionario extends ExecutaSQL{
             if(rs != null){
                 rs.next();
                 int id = rs.getInt(1);
-                return new Funcionario(id, login, senha);
+                return new Usuario(id, login, senha);
             }
         } catch (SQLException ex) {
             System.err.println("Erro com a sintaxe SQL no metodo de consulta. GerenteDAO");    

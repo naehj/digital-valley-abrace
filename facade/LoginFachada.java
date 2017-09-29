@@ -1,15 +1,15 @@
-package Facade;
+package facade;
 
 import DAO.ConnectionFactory;
 import DAO.DAOFuncionario;
-import Exceptions.FuncionarioInvalidoException;
-import Exceptions.PessoaInvalidaException;
-import Model.Funcionario;
+import exceptions.FuncionarioInvalidoException;
+import exceptions.PessoaInvalidaException;
+import model.Usuario;
 
-public class FuncionarioFacade {
+public class LoginFachada {
 
-	public Funcionario loga(String login, String senha) {
-		Funcionario func = null;
+	public Usuario loga(String login, String senha) {
+		Usuario func = null;
 		try {
 			func = new DAOFuncionario(new ConnectionFactory().abreConexao()).getFuncionario(login, senha);
 			if(func == null) {

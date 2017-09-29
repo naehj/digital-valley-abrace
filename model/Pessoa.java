@@ -1,51 +1,35 @@
-package Model;
+package model;
 
 import java.time.LocalDate;
 
-import Exceptions.PessoaInvalidaException;
+import exceptions.PessoaInvalidaException;
 
 public abstract class Pessoa {
-	int id;
+	private int id;
     private String nome;
-    private LocalDate dataNascimento;
-    private String cpf;
-    private String rg;
     private String endereco;
-    private String email;
 	private String telefone;
     private String telefone2;
     private LocalDate dataCadastro;
-    
+    private String email;
+    private boolean ativo;
+
     public Pessoa() {
     	
     }
     
-    public Pessoa(String nome, String cpf, String endereco, LocalDate dataNascimento, LocalDate dataCadastro,
-			String telefone, String telefone2, String rg, String email) throws PessoaInvalidaException{
+    public Pessoa(String nome, String endereco, String telefone, String telefone2, LocalDate dataCadastro,String email, boolean ativo) throws PessoaInvalidaException{
     	setNome(nome);
-    	setCpf(cpf);
-    	setEndereco(endereco);
-    	setDataNascimento(dataNascimento);
-    	setDataCadastro(dataCadastro);
     	setTelefone(telefone);
     	setTelefone2(telefone2);
+    	setEndereco(endereco);
+    	setDataCadastro(dataCadastro);
     	setEmail(email);
-    	setRg(rg);
-		
-    }
+     }
     
-    public Pessoa(int id, String nome, String cpf, String endereco, LocalDate dataNascimento, LocalDate dataCadastro,
-			String telefone, String telefone2, String rg, String email) throws PessoaInvalidaException{
-    	setId(id);
-    	setNome(nome);
-    	setCpf(cpf);
-    	setEndereco(endereco);
-    	setDataNascimento(dataNascimento);
-    	setDataCadastro(dataCadastro);
-    	setTelefone(telefone);
-    	setTelefone2(telefone2);
-    	setEmail(email);
-    	setRg(rg);
+	public Pessoa(int id, String nome, String endereco,  LocalDate dataCadastro, String telefone, String telefone2, String email, boolean ativo) throws PessoaInvalidaException{
+    	this(nome, endereco, telefone, telefone2, dataCadastro, email, ativo);
+		setId(id);
 	}
     
 	public int getId() {
@@ -68,15 +52,7 @@ public abstract class Pessoa {
 		}
 		this.nome = nome;
 	}
-	public String getCpf() {
-		return cpf;
-	}
-	public void setCpf(String cpf) throws PessoaInvalidaException{
-		if(cpf == null) {
-			throw new PessoaInvalidaException("O cpf informado é inválido");
-		}//Aqui deveria ter um teste para ver se o cpf é valido!!!!
-		this.cpf = cpf;
-	}
+	
 	public String getEndereco() {
 		return endereco;
 	}
@@ -86,15 +62,7 @@ public abstract class Pessoa {
 		}
 		this.endereco = endereco;
 	}
-	public LocalDate getDataNascimento() {
-		return dataNascimento;
-	}
-	public void setDataNascimento(LocalDate dataNascimento) throws PessoaInvalidaException{
-		if(dataNascimento == null || LocalDate.now().isBefore(dataNascimento)) {
-			throw new PessoaInvalidaException("A data informada é inválida");
-		}
-		this.dataNascimento = dataNascimento;
-	}
+	
 	public LocalDate getDataCadastro() {
 		return dataCadastro;
 	}
@@ -122,15 +90,7 @@ public abstract class Pessoa {
 		}
 		this.telefone2 = telefone2;
 	}
-	public String getRg() {
-		return rg;
-	}
-	public void setRg(String rg) throws PessoaInvalidaException{
-		if(rg == null) {
-			throw new PessoaInvalidaException("O RG informado é inválido");
-		}
-		this.rg = rg;
-	}
+	
 	public String getEmail() {
 		return email;
 	}
@@ -139,5 +99,12 @@ public abstract class Pessoa {
 			throw new PessoaInvalidaException("O e-mail informado é inválido");
 		}
 		this.email = email;
+	}
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 }
