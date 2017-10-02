@@ -1,6 +1,8 @@
 package control;
 
 import org.eclipse.swt.events.SelectionEvent;
+
+import model.Assistido;
 import view.CadastroAssistido;
 
 public class CadastroAssistidoControle {
@@ -19,6 +21,9 @@ public class CadastroAssistidoControle {
 	}
 
 	public void getEvent(SelectionEvent event) {
-		
+		if (event.toString().equals("btnCadastrar")) {
+			Assistido model = new Assistido();
+			model.setNome(view.getTfNome().toString());
+		}
 	}
 }

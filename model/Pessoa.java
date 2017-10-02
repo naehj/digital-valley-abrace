@@ -13,9 +13,12 @@ public abstract class Pessoa {
 	private long rg;
 	private String email;
 
-	
-	public Pessoa(String nome, String cpf, String endereco, LocalDate dataNascimento,
-			String telefone, String telefone2, long rg, String email) {
+	public Pessoa() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Pessoa(String nome, String cpf, String endereco, LocalDate dataNascimento, String telefone, String telefone2,
+			long rg, String email) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;

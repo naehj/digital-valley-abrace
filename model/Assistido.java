@@ -7,12 +7,17 @@ public class Assistido extends Pessoa {
 	private String tipoDeCancer;
 	private boolean ativo;
 
+	public Assistido() {
+		super();
+	}
 	public Assistido(String nome, String cpf, String endereco, LocalDate dataNascimento,
 			String telefone, String telefone2, long rg, String email, String tipoDeCancer, boolean ativo) {
 		super(nome, cpf, endereco, dataNascimento, telefone, telefone2, rg, email);
 		this.tipoDeCancer = tipoDeCancer;
 		this.ativo = ativo;
 	}
+
+	
 
 	public String getTipoDeCancer() {
 		return tipoDeCancer;
