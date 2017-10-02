@@ -236,8 +236,4 @@ public class CadastroAssistido extends Shell {
 
 	}
 
-	@Override
-	protected void checkSubclass() {
-		// Disable the check that prevents subclassing of SWT components
-	}
 }
