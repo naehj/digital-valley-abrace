@@ -5,20 +5,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import exceptions.FuncionarioInvalidoException;
+import exceptions.UsuarioInvalidoException;
 import exceptions.PessoaInvalidaException;
 import model.Usuario;
 
-public class DAOFuncionario extends ExecutaSQL{
+public class DAOUsuario extends ExecutaSQL{
 
-	public DAOFuncionario(Connection connection) {
+	public DAOUsuario(Connection connection) {
 		super(connection);
 	}
 	
-	public Usuario getFuncionario(String login, String senha) throws FuncionarioInvalidoException, PessoaInvalidaException {
-        //Alterando alguma coisa
-		try {
-        	String sql = "SELECT , idPessoa FROM FUNCIONARIO WHERE login=? AND senha=?";
+	public Usuario getFuncionario(String login, String senha) throws UsuarioInvalidoException, PessoaInvalidaException {
+        try {
+        	String sql = "SELECT idDoador FROM Usuario WHERE login=? AND senha=?";
             PreparedStatement ps = getConexao().prepareStatement(sql);
             ps.setString(1, login);
             ps.setString(2, senha);

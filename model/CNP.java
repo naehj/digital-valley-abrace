@@ -15,14 +15,19 @@ public class CNP {
 	   }
 
 	   public boolean isValidCPF(String cpf) {
-	      if ((cpf==null) || (cpf.length()!=11)) return false;
-
+		   cpf = cpf.replace(".", "");
+		   cpf = cpf.replace("-", "");
+		   System.out.print(cpf);
+		   if ((cpf==null) || (cpf.length()!=11)) return false;
 	      int digito1 = calcularDigito(cpf.substring(0,9), pesoCPF);
 	      int digito2 = calcularDigito(cpf.substring(0,9) + digito1, pesoCPF);
 	      return cpf.equals(cpf.substring(0,9) + digito1+"" + digito2+"");
 	   }
 
 	   public boolean isValidCNPJ(String cnpj) {
+		   cnpj = cnpj.replace(".", "");
+		   cnpj = cnpj.replace("-", "");
+		   cnpj = cnpj.replace("/", "");
 	      if ((cnpj==null)||(cnpj.length()!=14)) return false;
 
 	      int digito1 = calcularDigito(cnpj.substring(0,12), pesoCNPJ);

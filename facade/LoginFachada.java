@@ -1,27 +1,25 @@
 package facade;
 
+import java.sql.SQLException;
+
 import DAO.ConnectionFactory;
-import DAO.DAOFuncionario;
-import exceptions.FuncionarioInvalidoException;
+import DAO.DAOUsuario;
+import exceptions.UsuarioInvalidoException;
 import exceptions.PessoaInvalidaException;
 import model.Usuario;
 
 public class LoginFachada {
 
-	public Usuario loga(String login, String senha) {
+	public Usuario loga(String login, String senha) throws UsuarioInvalidoException, PessoaInvalidaException {
 		Usuario func = null;
+		DAOUsuario dao = new DAOUsuario(new ConnectionFactory().abreConexao());
+		func = dao.getFuncionario(login, senha);
 		try {
-			func = new DAOFuncionario(new ConnectionFactory().abreConexao()).getFuncionario(login, senha);
-			if(func == null) {
-				System.out.println("O funcionário está null");
-			}
-		} catch (FuncionarioInvalidoException e) {
-			System.out.println(e.getMessage());
-		} catch (PessoaInvalidaException e) {
-			System.out.println(e.getMessage());
+			dao.getConexao().close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		finally {
-			return func;
-		}
+		return func;
 	}
 }

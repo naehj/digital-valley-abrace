@@ -40,14 +40,14 @@ public class PessoaFisica extends Pessoa{
 		this.cpf = cpf;
 	}
 
-	public String getRg() throws PessoaFisicaException {
-		if(rg == null) {
-			throw new PessoaFisicaException("O RG informado é inválido!");
-		}
+	public String getRg()  {
 		return rg;
 	}
 
-	public void setRg(String rg) {
+	public void setRg(String rg) throws PessoaFisicaException{
+		if(rg == null) {
+			throw new PessoaFisicaException("O RG informado é inválido!");
+		}
 		this.rg = rg;
 	}
 
