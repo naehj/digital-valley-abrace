@@ -12,6 +12,7 @@ public class DAOAssistido {
 	public DAOAssistido() throws ClassNotFoundException {
 		this.con = new Conexao().getConnection();
 	}
+	@SuppressWarnings("deprecation")
 	public void adiciona(Assistido assistido) {
 		String sql = "insert into Assistido"
 	+"(nome, cpf, endereco, dataNascimento, dataCadastro, telefone, telefone2, rg, email, tipodeCancer, ativo)"
